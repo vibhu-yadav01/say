@@ -75,6 +75,50 @@ app.get("/user", (req, res)=>{
     }
 })
 
+//delete
+app.get("/user/:id/delete", (req, res)=>{
+    let {id} = req.params;
+    let q = `SELECT * FROM user WHERE id = '${id}'`
+    try{
+      connection.query(q,(err, result)=>{
+          if(err) throw err;
+          let user = result[0];
+          res.render("delete.ejs", {user});
+        });
+  
+      }catch(err){
+       console.log(err);
+       res.send("some error in DB");
+      }
+  });
+  
+  //delete form
+  app.delete("/user/:id", (req, res)=>{
+    let { id } = req.params;
+    let { email: userEmail, password: userPass} = req.body;
+    let q = `SELECT * FROM user WHERE id = '${id}'`
+    try{
+      connection.query(q,(err, result)=>{
+          if(err) throw err;
+          let user = result[0];
+          if(userEmail != user.email || userPass != user.password){
+            res.send("INVALID DATA");
+          }
+          else{
+            let q2 = `DELETE FROM user WHERE id = '${ id }'`;
+            connection.query(q2, (err, result) =>{
+              if(err) throw err;
+              res.redirect("/user");
+            })
+          }
+        });
+   
+      }catch(err){
+       console.log(err);
+       res.send("some error in DB");
+      }
+  })
+
 app.listen("8080", ()=>{
     console.log("server started...");
 });
