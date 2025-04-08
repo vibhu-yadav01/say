@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const methodOverride = require("method-override");
 const { faker } = require("@faker-js/faker");
+const { count } = require("console");
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -59,6 +60,20 @@ app.get("/",(req, res)=>{
      res.send("some error in DB");
     }
   });
+
+//show user
+app.get("/user", (req, res)=>{
+    let q = `SELECT * FORM user`;
+    try {
+        connection.query(q,(err, result)=>{
+            if(err) throw err;
+            res.render("showuser.ejs",{user})
+        })
+    } catch (error) {
+        console.log(err);
+        res.send("some error in DB");
+    }
+})
 
 app.listen("8080", ()=>{
     console.log("server started...");
