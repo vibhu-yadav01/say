@@ -37,10 +37,28 @@ let getRandomUser= ()=>{
 //      console.log(err);
 //      res.send("some error in DB");
 //     }
-connection.end();
+// connection.end();
 app.use(express.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
+
+
+
+//home route
+app.get("/",(req, res)=>{
+    let q = `SELECT count(*) FROM user`;
+    try{
+    connection.query(q,(err, result)=>{
+        if(err) throw err;
+        let count = result[0]["count(*)"];
+        res.render("home.ejs", { count});
+      });
+
+    }catch(err){
+     console.log(err);
+     res.send("some error in DB");
+    }
+  });
 
 app.listen("8080", ()=>{
     console.log("server started...");
