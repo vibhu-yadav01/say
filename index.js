@@ -99,7 +99,31 @@ app.get("/user/:id/edit", (req, res)=>{
     }
 });
 
-
+//UPDATE
+app.patch("/user/:id", (req, res)=>{
+  let {id} = req.params;
+  let { password: formPass, username: newUsername } = req.body;
+  let q = `SELECT * FROM user WHERE id = '${id}'`
+  try{
+    connection.query(q,(err, result)=>{
+        if(err) throw err;
+        let user = result[0];
+        if(formPass != user.password){
+          res.send("wrong password");
+        }else{
+          let q2 = `UPDATE user SET username = '${newUsername}' WHERE id = '${id}'`;
+          connection.query(q2, (err, result) =>{
+            if(err) throw err;
+            res.redirect("/user");
+          })
+        }
+      });
+ 
+    }catch(err){
+     console.log(err);
+     res.send("some error in DB");
+    }
+});
 
 //delete
 app.get("/user/:id/delete", (req, res)=>{
