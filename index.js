@@ -16,7 +16,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     database: 'anonymous',
-    password: ''// your password
+    password: ''// your
 });
 
 let getRandomUser= ()=>{
@@ -79,6 +79,12 @@ app.get("/",(req, res)=>{
        res.send("some error in DB");
       }
   })
+
+
+//ADD
+app.get("/user/add/form", (req,res)=>{
+  res.render("add.ejs");
+});
 
 
 
