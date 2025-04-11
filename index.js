@@ -6,11 +6,17 @@ const methodOverride = require("method-override");
 const { faker } = require("@faker-js/faker");
 const { count } = require("console");
 
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({extended: true}));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/views"));
+
+
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     database: 'anonymous',
-    password: '#V@ibh@v#2503#'
+    password: ''// your password
 });
 
 let getRandomUser= ()=>{
@@ -39,41 +45,61 @@ let getRandomUser= ()=>{
 //      res.send("some error in DB");
 //     }
 // connection.end();
-app.use(express.urlencoded({extended: true}));
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views"));
+
 
 
 
 //home route
 app.get("/",(req, res)=>{
-    let q = `SELECT count(*) FROM user`;
+  let q = `SELECT count(*) FROM user`;
+  try{
+  connection.query(q,(err, result)=>{
+      if(err) throw err;
+      let count = result[0]["count(*)"];
+      res.render("home.ejs", { count});
+    });
+
+  }catch(err){
+   console.log(err);
+   res.send("some error in DB");
+  }
+});
+
+  //show route
+  app.get("/user", (req, res)=>{
+    let q = `SELECT * FROM user`;
     try{
+      connection.query(q,(err, users)=>{
+          if(err) throw err;
+          res.render("showuser.ejs",{ users});
+        });
+  
+      }catch(err){
+       console.log(err);
+       res.send("some error in DB");
+      }
+  })
+
+
+
+//EDIT ROUTE
+app.get("/user/:id/edit", (req, res)=>{
+  let {id} = req.params;
+  let q = `SELECT * FROM user WHERE id = '${id}'`
+  try{
     connection.query(q,(err, result)=>{
         if(err) throw err;
-        let count = result[0]["count(*)"];
-        res.render("home.ejs", { count});
+        let user = result[0];
+        res.render("edit.ejs", {user});
       });
 
     }catch(err){
      console.log(err);
      res.send("some error in DB");
     }
-  });
+});
 
-//show user
-app.get("/user", (req, res)=>{
-    let q = `SELECT * FORM user`;
-    try {
-        connection.query(q,(err, result)=>{
-            if(err) throw err;
-            res.render("showuser.ejs",{user})
-        })
-    } catch (error) {
-        console.log(err);
-        res.send("some error in DB");
-    }
-})
+
 
 //delete
 app.get("/user/:id/delete", (req, res)=>{
