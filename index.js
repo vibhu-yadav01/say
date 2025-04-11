@@ -86,7 +86,26 @@ app.get("/user/add/form", (req,res)=>{
   res.render("add.ejs");
 });
 
+//adding
+app.post("/user/add", (req, res) => {
+  let current_id = faker.string.uuid();
+  let { email: emailUser, username: usernameC, password: formPass } = req.body;
 
+  console.log(emailUser);
+
+  let q = `INSERT INTO user(id, username, email, password) VALUES (?, ?, ?, ?)`;
+  let values = [current_id, usernameC, emailUser, formPass];
+
+  try {
+    connection.query(q, values, (err, result) => {
+      if (err) throw err;
+      res.redirect("/user");
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("Some error in DB");
+  }
+});
 
 //EDIT ROUTE
 app.get("/user/:id/edit", (req, res)=>{
