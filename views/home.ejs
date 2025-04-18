@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>🌍 Welcome to the Cool Club</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h2>The total number of user are: <%= count  %></h2>
-    <form action="/user">
-        <button>show</button>
-    </form><br>
-    <form action="/user/add/form">
-        <button>JOIN US TODAY!</button>
-    </form>
+    <div class="container">
+        <h2>🧮 We currently have <span class="count"><%= count %></span> awesome humans here!</h2>
+
+        <form action="/user">
+            <button class="fun-button">👀 Show Me the Users!</button>
+        </form><br>
+
+        <form action="/user/add/form">
+            <button class="join-button">🚀 JOIN US TODAY! 🎉</button>
+        </form>
+
+        <div class="fun-fact">
+            🤔 Fun Fact: Clicking buttons increases happiness by 42.7%!
+        </div>
+    </div>
 </body>
 </html>
