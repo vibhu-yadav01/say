@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Entry</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📝 Data Entry Zone</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Data Entry Form</h1>
+  <div class="form-container">
+    <h1>🎯 Enter Your Epic Info</h1>
 
     <form method="POST" action="/user/add">
-      <label>Username:</label><br>
-      <input name="username" placeholder="Enter your name" required><br><br>
-  
-      <label>Email:</label><br>
-      <input type="email" name="email" placeholder="Enter your email" required /><br><br>
+      <label for="username">Username 👤</label><br>
+      <input id="username" name="username" placeholder="Enter your legendary name" required><br><br>
 
+      <label for="email">Email 📧</label><br>
+      <input id="email" type="email" name="email" placeholder="e.g. you@cool.com" required /><br><br>
 
-      <label>Password:</label><br>
-      <input type="password" name="password" placeholder="Enter your password" required /><br><br>
-  
-      <button type="submit">SUBMIT</button>
+      <label for="password">Password 🔐</label><br>
+      <input id="password" type="password" name="password" placeholder="Shh... it's a secret" required /><br><br>
+
+      <button type="submit" class="submit-btn">🚀 Launch Me In!</button>
     </form>
+
+    <p class="footer-note">✨ Your data will be stored in the Cloud of Awesomeness™</p>
+  </div>
 </body>
 </html>
