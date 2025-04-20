@@ -1,0 +1,145 @@
+/* GENERAL STYLES */
+body {
+    background: linear-gradient(to right, #fefcea, #f1da36);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    color: #333;
+  }
+  
+  .container, .form-container {
+    background-color: white;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    animation: slideDown 1s ease-out;
+  }
+  
+  h1, h2 {
+    color: #ff5722;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: border 0.3s ease;
+  }
+  
+  input:focus {
+    border: 2px solid #ff9800;
+    outline: none;
+    box-shadow: 0 0 8px #ff980070;
+  }
+  
+  /* BUTTONS */
+  button, .fun-button, .join-button, .submit-btn {
+    margin-top: 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .fun-button {
+    background-color: #4caf50;
+  }
+  
+  .fun-button:hover {
+    background-color: #388e3c;
+    transform: scale(1.1) rotate(-2deg);
+  }
+  
+  .join-button {
+    background-color: #ff9800;
+  }
+  
+  .join-button:hover {
+    background-color: #fb8c00;
+    transform: scale(1.1) rotate(2deg);
+  }
+  
+  .submit-btn {
+    background-color: #4caf50;
+  }
+  
+  .submit-btn:hover {
+    background-color: #388e3c;
+    transform: scale(1.05) rotate(-1deg);
+  }
+  
+  /* FUN ELEMENTS */
+  .count {
+    color: #ff4081;
+    font-weight: bold;
+    font-size: 28px;
+    animation: pop 1s infinite alternate;
+  }
+  
+  .fun-fact {
+    margin-top: 30px;
+    font-style: italic;
+    font-size: 14px;
+    color: #888;
+    animation: bounce 2s infinite ease-in-out;
+  }
+  
+  .footer-note {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #888;
+    font-style: italic;
+  }
+  
+  /* ANIMATIONS */
+  @keyframes slideDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pop {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
+      color: #e91e63;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
