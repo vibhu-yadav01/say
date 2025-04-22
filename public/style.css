@@ -143,3 +143,30 @@ body {
     }
   }
   
+  /* TABLE STYLING */
+table.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  .user-table th, .user-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+  }
+  
+  .user-table th {
+    background-color: #ffcc80;
+    color: #333;
+  }
+  
+  .user-table tr:nth-child(even) {
+    background-color: #fff3e0;
+  }
+  
+  .user-table tr:hover {
+    background-color: #ffe0b2;
+    transition: background-color 0.3s ease;
+  }
+  
