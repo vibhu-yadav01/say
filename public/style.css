@@ -182,3 +182,18 @@ table.user-table {
     box-shadow: 0 0 8px #ff980070;
   }
     
+  .delete-btn {
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #e53935;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c62828;
+  }
+  
