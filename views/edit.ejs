@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✏️ Edit User</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <h1>You are about to edit: <%= user.email %></h1>
+  <div class="form-container">
+    <h1>Editing <%= user.email %> 🔧</h1>
 
-  <form method="POST" action="/user/<%= user.id %>?_method=PATCH">
-    <label>Username:</label><br>
-    <textarea name="username" required><%= user.username %></textarea><br><br>
+    <form method="POST" action="/user/<%= user.id %>?_method=PATCH">
+      <label>Username:</label><br>
+      <textarea name="username" required rows="2" style="width: 100%; padding: 10px; border-radius: 10px; font-size: 16px;"><%= user.username %></textarea><br><br>
 
-    <label>Password:</label><br>
-    <input type="password" name="password" placeholder="Enter your password" required /><br><br>
+      <label>Password:</label><br>
+      <input type="password" name="password" placeholder="Enter your password" required /><br><br>
 
-    <button type="submit">SUBMIT</button>
-  </form>
+      <button type="submit" class="submit-btn">✅ Update</button>
+    </form>
+  </div>
 </body>
 </html>
