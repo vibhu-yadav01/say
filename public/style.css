@@ -169,4 +169,16 @@ table.user-table {
     background-color: #ffe0b2;
     transition: background-color 0.3s ease;
   }
+  textarea {
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: border 0.3s ease;
+  }
   
+  textarea:focus {
+    border: 2px solid #ff9800;
+    outline: none;
+    box-shadow: 0 0 8px #ff980070;
+  }
+    
